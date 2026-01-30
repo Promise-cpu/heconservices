@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAC Registration Services | HECON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --real-estate-color: #1a5c36;
+            --real-estate-light: #e9f5ee;
+            --cac-color: #0d4d6d;
+            --cac-light: #edf5fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --border-color: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--cac-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--cac-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0a3d57;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-alt {
+            background-color: var(--real-estate-color);
+        }
+
+        .btn-alt:hover {
+            background-color: #144328;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--real-estate-color);
+        }
+
+        .logo-circle {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--real-estate-color);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            font-weight: 800;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .desktop-nav ul li {
+            margin-left: 30px;
+        }
+
+        .desktop-nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .desktop-nav ul li a:hover {
+            color: var(--real-estate-color);
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu ul li a {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu ul li a:hover {
+            background-color: var(--cac-light);
+            color: var(--cac-color);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background-color: var(--cac-light);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--cac-color);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+
+        /* Registration Process */
+        .process-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--cac-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .process-step h3 {
+            font-size: 1.6rem;
+            color: var(--cac-color);
+            margin-bottom: 15px;
+        }
+
+        .process-step p {
+            margin-bottom: 0;
+        }
+
+        /* Services Offered */
+        .services-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .service-header {
+            background-color: var(--cac-color);
+            color: var(--white);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .service-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0;
+            color: var(--white);
+        }
+
+        .service-body {
+            padding: 30px;
+        }
+
+        .service-body ul {
+            list-style-position: inside;
+            margin-bottom: 25px;
+        }
+
+        .service-body ul li {
+            margin-bottom: 12px;
+            color: var(--text-light);
+            padding-left: 5px;
+        }
+
+        .service-body ul li i {
+            color: var(--cac-color);
+            margin-right: 10px;
+        }
+
+        .service-price {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cac-color);
+            margin: 25px 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-note {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Requirements Section */
+        .requirements-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .requirements-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .requirements-list {
+            background-color: var(--cac-light);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .requirements-list h3 {
+            color: var(--cac-color);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .requirements-list ul {
+            list-style: none;
+        }
+
+        .requirements-list ul li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .requirements-list ul li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cac-color);
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            background-color: var(--white);
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--cac-color);
+            border-left: 4px solid var(--cac-color);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background-color: var(--white);
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-answer.active {
+            padding: 25px;
+            max-height: 500px;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background-color: var(--cac-color);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .contact-cta h2 {
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .contact-cta h2::after {
+            background-color: var(--white);
+        }
+
+        .contact-cta p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .contact-cta .btn {
+            background-color: var(--white);
+            color: var(--cac-color);
+        }
+
+        .contact-cta .btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--cac-color);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo-circle {
+            background-color: var(--white);
+            color: var(--real-estate-color);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .full-image-banner {
+            margin-top: 70px;
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .header-container {
+                padding: 20px 30px;
+            }
+            
+            .company-name {
+                display: block;
+            }
+            
+            .desktop-nav {
+                display: block;
+            }
+            
+            .hamburger {
+                display: none;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .requirements-content {
+                flex-direction: row;
+            }
+            
+            .requirements-list {
+                flex: 1;
+            }
+            
+            .footer-links {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .process-steps {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+
+        
+
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-circle">H</div>
+                HECON
+            </div>
+            <div class="company-name">HECON SERVICES</div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#benefits">Benefits</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="re.html">Real Estate</a></li>
+                    <li><a href="cac.html" class="active">CAC Registration</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#benefits">Benefits</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="re.html">Real Estate Services</a></li>
+                <li><a href="cac.html" class="active">CAC Registration</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <!-- Full Width Image Banner -->
+<div class="full-image-banner">
+    <img src="H1.jpeg" style="width: 100%; height: auto;"
+         alt="CAC Registration Services">
+</div>
+
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>CAC Registration Services</h1>
+            <p>Simplify your business registration process with our expert Corporate Affairs Commission (CAC) services. We handle everything from company registration to compliance, ensuring your business starts on the right legal footing.</p>
+            <a href="#services" class="btn">View Our Services</a>
+        </div>
+    </section>
+
+    <!-- Registration Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2>Our Simple Registration Process</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">We've streamlined the CAC registration process into four simple steps to get your business registered quickly and efficiently.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Initial Consultation</h3>
+                    <p>We discuss your business structure, name preferences, and registration requirements to determine the best approach for your company.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Document Preparation</h3>
+                    <p>Our experts prepare all necessary documents including memorandum and articles of association, and conduct name availability searches.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Registration Submission</h3>
+                    <p>We submit your complete application to the Corporate Affairs Commission and monitor the process until approval is granted.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Certificate Delivery</h3>
+                    <p>Once approved, we collect your Certificate of Incorporation and other documents, then deliver them to you along with guidance on next steps.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#contact" class="btn">Start Your Registration</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Offered -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2>CAC Registration Packages</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">We offer comprehensive CAC registration packages tailored to different business needs. Choose the package that best suits your requirements.</p>
+            
+            <div class="services-grid">
+                <!-- Business Name Registration -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Business Name Registration</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Ideal for sole proprietors and partnerships looking to register a business name with the CAC.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Business Name Availability Search</li>
+                            <li><i class="fas fa-check"></i> Preparation of Registration Forms</li>
+                            <li><i class="fas fa-check"></i> Submission to CAC</li>
+                            <li><i class="fas fa-check"></i> BN Certificate Collection</li>
+                            <li><i class="fas fa-check"></i> Basic Tax Consultation</li>
+                        </ul>
+                        <div class="service-price">
+                            ₦25,000
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; display: block; text-align: center;">Get Started</a>
+                        <p class="service-note">Excluding government fees</p>
+                    </div>
+                </div>
+                
+                <!-- Private Limited Company -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Private Limited Company</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Perfect for small to medium-sized businesses looking to incorporate as a private limited liability company.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Company Name Reservation</li>
+                            <li><i class="fas fa-check"></i> Memorandum & Articles of Association</li>
+                            <li><i class="fas fa-check"></i> CAC Incorporation Forms</li>
+                            <li><i class="fas fa-check"></i> Certificate of Incorporation</li>
+                            <li><i class="fas fa-check"></i> Company Seal & Statutory Books</li>
+                        </ul>
+                        <div class="service-price">
+                            ₦45,000
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; display: block; text-align: center;">Get Started</a>
+                        <p class="service-note">Excluding government fees</p>
+                    </div>
+                </div>
+                
+                <!-- Comprehensive Package -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Comprehensive Package</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>All-inclusive package for businesses needing full registration and post-incorporation support.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Everything in Private Limited Package</li>
+                            <li><i class="fas fa-check"></i> Tax Identification Number (TIN)</li>
+                            <li><i class="fas fa-check"></i> Business Bank Account Opening Support</li>
+                            <li><i class="fas fa-check"></i> First Year Annual Returns Filing</li>
+                            <li><i class="fas fa-check"></i> 3 Months Compliance Support</li>
+                        </ul>
+                        <div class="service-price">
+                            ₦75,000
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; display: block; text-align: center;">Get Started</a>
+                        <p class="service-note">Excluding government fees</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <p><strong>Note:</strong> Government fees vary based on company share capital and other factors. Contact us for a personalized quote.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="requirements-section">
+        <div class="container">
+            <h2>Registration Requirements</h2>
+            <div class="requirements-content">
+                <div class="requirements-list">
+                    <h3>For Business Name Registration</h3>
+                    <ul>
+                        <li>Two proposed business names (in order of preference)</li>
+                        <li>Nature of business activities</li>
+                        <li>Business address</li>
+                        <li>Passport photograph of proprietor/partners</li>
+                        <li>Valid means of identification (International Passport, Driver's License, or National ID Card)</li>
+                        <li>Utility bill as proof of address (not more than 3 months old)</li>
+                    </ul>
+                </div>
+                
+                <div class="requirements-list">
+                    <h3>For Private Limited Company</h3>
+                    <ul>
+                        <li>Two proposed company names (in order of preference)</li>
+                        <li>Nature of business activities</li>
+                        <li>Registered office address</li>
+                        <li>Details of shareholders (minimum of 2, maximum of 50)</li>
+                        <li>Details of directors (minimum of 2)</li>
+                        <li>Company secretary details (can be appointed later)</li>
+                        <li>Authorized share capital</li>
+                        <li>Passport photographs and valid ID of all shareholders and directors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does CAC registration take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Business Name registration typically takes 1-2 weeks, while Private Limited Company registration takes 2-4 weeks, depending on CAC processing times and document completeness.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the difference between Business Name and Company registration?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A Business Name registration is for sole proprietors or partnerships, offering no separation between personal and business liabilities. A Private Limited Company is a separate legal entity, providing limited liability protection to its shareholders.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I register my company without a physical office address?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can use a virtual office address for registration. We can assist you in obtaining a credible virtual office address that meets CAC requirements for business registration.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens after my company is registered?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After registration, you'll receive your Certificate of Incorporation. You'll then need to open a corporate bank account, register for taxes, and ensure ongoing compliance with filing annual returns and other statutory requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer post-registration services?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer comprehensive post-registration services including tax registration, accounting support, annual returns filing, and ongoing compliance management to ensure your business remains in good standing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="contact">
+        <div class="container">
+            <h2>Ready to Register Your Business?</h2>
+            <p>Our team of CAC registration experts is ready to guide you through the entire process. Contact us today for a free consultation and let us help you establish your business with proper legal standing.</p>
+            <a href="index.html#contact" class="btn">Contact Us Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-circle">H</div>
+                        HECON SERVICES
+                    </div>
+                    <p>Providing exceptional real estate and corporate registration services with integrity and professionalism since 2010.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#benefits">Benefits</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><a href="re.html">Real Estate</a></li>
+                            <li><a href="cac.html">CAC Registration</a></li>
+                            <li><a href="cac.html">Business Name Registration</a></li>
+                            <li><a href="cac.html">Company Incorporation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="index.html#contact">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 HECON Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            hamburger.innerHTML = mobileMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add active class to current page in desktop nav
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-menu a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
