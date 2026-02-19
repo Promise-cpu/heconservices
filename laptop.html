@@ -1,9 +1,11 @@
+Here is the updated HTML code for your Laptops page. I've implemented all your specific instructions: the header and footer now match the home page exactly, the hero background image covers the full viewport, the laptop images are displayed as tall rectangles, and clicking any image opens a full-size view.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAC Registration Services | HECON</title>
+    <title>Laptop Sales | HECON</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ---------- RESET & BASE (exactly as home page) ---------- */
@@ -17,7 +19,7 @@
         :root {
             --real-estate-color: rgb(1, 35, 10);      /* dark green from home */
             --real-estate-light: #e9f5ee;
-            --cac-color: #193826;                     /* keep consistent with home page CAC color */
+            --cac-color: #193826;
             --cac-light: #edf5fa;
             --gadget-color: #193826;
             --gadget-light: #f3e9ff;
@@ -26,7 +28,7 @@
             --white: #ffffff;
             --light-gray: #f8f9fa;
             --border-color: #e0e0e0;
-            --soft-black: #222222;                    /* footer background */
+            --soft-black: #222222;                   /* footer background */
         }
 
         html {
@@ -97,14 +99,6 @@
             background-color: #144328;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn-cac {
-            background-color: var(--cac-color);
-        }
-
-        .btn-cac:hover {
-            background-color: #0a3d57;
         }
 
         /* ----- header exactly like home page ----- */
@@ -214,10 +208,10 @@
             color: var(--real-estate-color);
         }
 
-        /* ----- page header: full viewport background with cac.jpg ----- */
+        /* ----- page header: full viewport background (hero fix) ----- */
         .page-header {
             padding: 0;                       /* remove extra padding */
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('cac.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('H15.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -239,6 +233,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
+            
         }
 
         .page-header h1 {
@@ -255,157 +250,104 @@
             max-width: 700px;
         }
 
-        /* Registration Process (keep original styling, adjust colors to match theme) */
-        .process-section {
+        /* ----- Laptop gallery: tall rectangles (short width, tall height) ----- */
+        .laptop-section {
             padding: 80px 0;
             background-color: var(--white);
         }
 
-        .process-steps {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .process-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .laptop-header {
             text-align: center;
-            padding: 30px;
-            background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            margin-bottom: 50px;
         }
 
-        .process-step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        .laptop-header h2 {
+            margin-bottom: 20px;
         }
 
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background-color: var(--cac-color);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
-
-        .process-step h3 {
-            font-size: 1.6rem;
-            color: var(--cac-color);
-            margin-bottom: 15px;
-        }
-
-        .process-step p {
-            margin-bottom: 0;
-        }
-
-        /* Requirements Section */
-        .requirements-section {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-
-        .requirements-content {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .requirements-list {
-            background-color: var(--cac-light);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        .requirements-list h3 {
-            color: var(--cac-color);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-
-        .requirements-list ul {
-            list-style: none;
-        }
-
-        .requirements-list ul li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-            color: var(--text-light);
-        }
-
-        .requirements-list ul li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--cac-color);
-            font-weight: bold;
-        }
-
-        /* FAQ Section - last question removed */
-        .faq-section {
-            background-color: var(--light-gray);
-            padding: 80px 0;
-        }
-
-        .faq-container {
+        .laptop-header p {
             max-width: 800px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
 
-        .faq-item {
-            margin-bottom: 20px;
+        .image-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .faq-question {
-            background-color: var(--white);
-            padding: 20px 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
+            aspect-ratio: 3 / 4;               /* tall rectangle: width 3, height 4 */
+            background-color: var(--light-gray);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;                /* show full image inside rectangle */
+            transition: transform 0.5s;
+            display: block;
+            background-color: var(--light-gray);
+            padding: 8px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.02);
+        }
+
+        /* ----- Lightbox (full image viewer) ----- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
             align-items: center;
-            font-weight: 600;
-            color: var(--cac-color);
-            border-left: 4px solid var(--cac-color);
+            justify-content: center;
         }
 
-        .faq-question i {
-            transition: transform 0.3s;
+        .lightbox.active {
+            display: flex;
         }
 
-        .faq-question.active i {
-            transform: rotate(180deg);
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border: 3px solid var(--white);
+            border-radius: 4px;
         }
 
-        .faq-answer {
-            background-color: var(--white);
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s;
-            border-top: 1px solid var(--border-color);
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .faq-answer.active {
-            padding: 25px;
-            max-height: 500px;
+        .lightbox-close:hover {
+            color: var(--real-estate-color);
         }
 
-        /* lower section (contact CTA) exactly like home page contact area */
+        /* ----- lower section (contact CTA) exactly like home page contact area ----- */
         .contact-cta {
             background: linear-gradient(to top, rgb(231, 231, 231), rgb(231, 231, 231));    /* same as home contact section */
             text-align: center;
@@ -548,16 +490,8 @@
                 display: none;
             }
             
-            .process-steps {
+            .image-gallery {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .requirements-content {
-                flex-direction: row;
-            }
-            
-            .requirements-list {
-                flex: 1;
             }
             
             .footer-links {
@@ -567,8 +501,8 @@
         }
 
         @media (min-width: 992px) {
-            .process-steps {
-                grid-template-columns: repeat(4, 1fr);
+            .image-gallery {
+                grid-template-columns: repeat(3, 1fr);
             }
             
             .footer-container {
@@ -619,8 +553,8 @@
                     <li><a href="index.html#benefits">Benefits</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="re.html">Real Estate</a></li>
-                    <li><a href="cac.html" class="active">Business Registration</a></li>
-                    <li><a href="laptop.html">Gadgets & Laptops</a></li>
+                    <li><a href="cac.html">Business Registration</a></li>
+                    <li><a href="laptop.html" class="active">Gadgets & Laptops</a></li>
                 </ul>
             </nav>
             <button class="hamburger" id="hamburger">
@@ -636,151 +570,66 @@
                 <li><a href="index.html#benefits">Benefits</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
                 <li><a href="re.html">Real Estate Services</a></li>
-                <li><a href="cac.html" class="active">CAC Registration</a></li>
-                <li><a href="laptop.html">Gadgets & Laptops</a></li>
+                <li><a href="cac.html">CAC Registration</a></li>
+                <li><a href="laptop.html" class="active">Gadgets & Laptops</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- PAGE HERO with cac.jpg (full viewport) -->
+    <!-- PAGE HERO (full viewport background) -->
     <section class="page-header">
         <div class="container">
             <div class="page-header-content">
-                <h1>CAC Registration Services</h1>
-                <p>Simplify your business registration process with our expert Corporate Affairs Commission (CAC) services. We handle everything from company registration to compliance, ensuring your business starts on the right legal footing.</p>
-                <a href="#process" class="btn btn-cac">View Our Services</a>
+                <h1>Premium Laptops & Gadgets</h1>
+                <p>Discover our exclusive collection of high-performance laptops and cutting-edge gadgets. From powerful workstations to sleek ultrabooks, we have the perfect device for your needs.</p>
+                <a href="#gallery" class="btn">View All Laptops</a>
             </div>
         </div>
     </section>
 
-    <!-- Registration Process (id for anchor) -->
-    <section class="process-section" id="process">
+    <!-- Laptop Gallery (tall rectangles, clickable) -->
+    <section class="laptop-section" id="gallery">
         <div class="container">
-            <h2>Our Simple Registration Process</h2>
-            <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">We've streamlined the CAC registration process into four simple steps to get your business registered quickly and efficiently.</p>
-            
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Initial Consultation</h3>
-                    <p>We discuss your business structure, name preferences, and registration requirements to determine the best approach for your company.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Document Preparation</h3>
-                    <p>Our experts prepare all necessary documents including memorandum and articles of association, and conduct name availability searches.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Registration Submission</h3>
-                    <p>We submit your complete application to the Corporate Affairs Commission and monitor the process until approval is granted.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Certificate Delivery</h3>
-                    <p>Once approved, we collect your Certificate of Incorporation and other documents, then deliver them to you along with guidance on next steps.</p>
-                </div>
+            <div class="laptop-header">
+                <h2>Our Laptop Collection</h2>
+                <p>Browse through our collection of premium laptops and gadgets. Each device is carefully selected to ensure quality, performance, and value for our clients.</p>
             </div>
             
-            <div style="text-align: center;">
-                <a href="#contact" class="btn btn-cac">Start Your Registration</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Requirements Section -->
-    <section class="requirements-section">
-        <div class="container">
-            <h2>Registration Requirements</h2>
-            <div class="requirements-content">
-                <div class="requirements-list">
-                    <h3>For Business Name Registration</h3>
-                    <ul>
-                        <li>Two proposed business names (in order of preference)</li>
-                        <li>Nature of business activities</li>
-                        <li>Business address</li>
-                        <li>Passport photograph of proprietor/partners</li>
-                        <li>Valid means of identification (International Passport, Driver's License, or National ID Card)</li>
-                        <li>Utility bill as proof of address (not more than 3 months old)</li>
-                    </ul>
+            <div class="image-gallery">
+                <div class="gallery-item" onclick="openLightbox('H15.jpeg')">
+                    <img src="H15.jpeg" alt="Premium Laptop">
                 </div>
-                
-                <div class="requirements-list">
-                    <h3>For Private Limited Company</h3>
-                    <ul>
-                        <li>Two proposed company names (in order of preference)</li>
-                        <li>Nature of business activities</li>
-                        <li>Registered office address</li>
-                        <li>Details of shareholders (minimum of 2, maximum of 50)</li>
-                        <li>Details of directors (minimum of 2)</li>
-                        <li>Company secretary details (can be appointed later)</li>
-                        <li>Authorized share capital</li>
-                        <li>Passport photographs and valid ID of all shareholders and directors</li>
-                    </ul>
+                <div class="gallery-item" onclick="openLightbox('H16.jpeg')">
+                    <img src="H16.jpeg" alt="Apple MacBook Pro">
+                </div>
+                <div class="gallery-item" onclick="openLightbox('H17.jpeg')">
+                    <img src="H17.jpeg" alt="Gaming Laptop">
+                </div>
+                <div class="gallery-item" onclick="openLightbox('H18.jpeg')">
+                    <img src="H18.jpeg" alt="Business Laptop">
+                </div>
+                <div class="gallery-item" onclick="openLightbox('H19.jpeg')">
+                    <img src="H19.jpeg" alt="Ultrabook">
+                </div>
+                <div class="gallery-item" onclick="openLightbox('H20.jpeg')">
+                    <img src="H20.jpeg" alt="Budget Laptop">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section (last question removed) -->
-    <section class="faq-section">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How long does CAC registration take?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Business Name registration typically takes 1-2 weeks, while Private Limited Company registration takes 2-4 weeks, depending on CAC processing times and document completeness.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What is the difference between Business Name and Company registration?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>A Business Name registration is for sole proprietors or partnerships, offering no separation between personal and business liabilities. A Private Limited Company is a separate legal entity, providing limited liability protection to its shareholders.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I register my company without a physical office address?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, you can use a virtual office address for registration. We can assist you in obtaining a credible virtual office address that meets CAC requirements for business registration.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What happens after my company is registered?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>After registration, you'll receive your Certificate of Incorporation. You'll then need to open a corporate bank account, register for taxes, and ensure ongoing compliance with filing annual returns and other statutory requirements.</p>
-                    </div>
-                </div>
-                
-                <!-- LAST QUESTION (the 5th one) REMOVED as requested -->
-            </div>
-        </div>
-    </section>
+    <!-- LIGHTBOX (full image viewer) -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="">
+    </div>
 
-    <!-- LOWER SECTION: exactly like home page contact area (Contact CTA) -->
+    <!-- LOWER SECTION: exactly like home page contact area -->
     <section class="contact-cta" id="contact">
         <div class="container">
-            <h2>Ready to Register Your Business?</h2>
-            <p>Our team of CAC registration experts is ready to guide you through the entire process. Contact us today for a free consultation and let us help you establish your business with proper legal standing.</p>
-            <a href="index.html#contact" class="btn">Contact Us Now</a>
+            <h2>Interested in Any of Our Laptops?</h2>
+            <p>Our tech experts are ready to assist you with product selection, specifications, and all your gadget needs. Contact us today to place an order or get more information about any device.</p>
+            <a href="index.html#contact" class="btn">Contact Us Today</a>
         </div>
     </section>
 
@@ -843,26 +692,6 @@
             });
         });
         
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const isActive = question.classList.contains('active');
-                
-                // Close all other FAQ items
-                document.querySelectorAll('.faq-question').forEach(q => {
-                    q.classList.remove('active');
-                    q.nextElementSibling.classList.remove('active');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    question.classList.add('active');
-                    answer.classList.add('active');
-                }
-            });
-        });
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -878,6 +707,25 @@
                     });
                 }
             });
+        });
+
+        // Lightbox functions (full image view)
+        function openLightbox(imgSrc) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden'; // prevent scrolling behind lightbox
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = ''; // restore scrolling
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
         });
 
         // Set active nav based on current page
@@ -896,3 +744,4 @@
     </script>
 </body>
 </html>
+```

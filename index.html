@@ -1,9 +1,11 @@
+Here is the updated HTML code for your business homepage. I've made the two specific changes you requested: the hero section now has a single "Our Services" button linking to the About section, and the contact info boxes have been restyled to have a wider, more uniform size.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HECON Services - Real Estate & Corporate Affairs</title>
+    <title>HECON Services - Real Estate, Corporate Affairs & Gadgets</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset & Base Styles */
@@ -15,10 +17,12 @@
         }
 
         :root {
-            --real-estate-color: #1a5c36;
+            --real-estate-color: rgb(0, 0, 0);
             --real-estate-light: #e9f5ee;
-            --cac-color: #0d4d6d;
+            --cac-color: #193826;
             --cac-light: #edf5fa;
+            --gadget-color: #193826;
+            --gadget-light: #f3e9ff;
             --text-dark: #333333;
             --text-light: #666666;
             --white: #ffffff;
@@ -103,10 +107,26 @@
         .btn-cac:hover {
             background-color: #0a3d57;
         }
+        
+        .btn-gadget {
+            background-color: var(--gadget-color);
+        }
+        
+        .btn-gadget:hover {
+            background-color: #7a1fd1;
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
 
         /* Header Styles */
         header {
-            background-color: var(--white);
+            background-color: var(--white); 
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
@@ -121,32 +141,23 @@
             padding: 15px 20px;
         }
 
-        .logo {
+        .logo-container {
             display: flex;
             align-items: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--real-estate-color);
+            gap: 15px;
+          
         }
 
-        .logo-circle {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: var(--real-estate-color);
-            color: var(--white);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 10px;
-            font-weight: 800;
+        .logo-img {
+            height: 50px;
+            width: auto;
+             
         }
 
         .company-name {
             font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-dark);
-            text-align: center;
-            flex-grow: 1;
         }
 
         .desktop-nav {
@@ -159,13 +170,14 @@
         }
 
         .desktop-nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
 
         .desktop-nav ul li a {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
@@ -221,92 +233,74 @@
             color: var(--real-estate-color);
         }
 
-        /* Hero Slider */
+        /* Hero Section - Single Image & Single Button */
         .hero-section {
-            padding-top: 140px;
-            padding-bottom: 80px;
+            padding-top: 70px;
+            padding-bottom: 0;
             position: relative;
             overflow: hidden;
+            height: calc(100vh - 70px);
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero-slider {
-            position: relative;
-            height: 500px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+       
+
+        .hero-image {
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            margin-right: 500px;
+             /* shift image to the right for better composition */
+            
         }
 
-        .slide {
+        .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
-            padding: 0 50px;
+            justify-content: center;
         }
 
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide.real-estate {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
-            background-size: cover;
-            background-position: center;
+        .hero-content {
+            max-width: 800px;
+            padding: 40px;
+           
+            border-radius: 8px;
+            text-align: center;
+            margin: 0 20px;
             color: var(--white);
         }
 
-        .slide.cac {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-        }
-
-        .slide-content {
-            max-width: 600px;
-        }
-
-        .slide h1 {
+        .hero-content h1 {
             font-size: 2.8rem;
             margin-bottom: 20px;
         }
 
-        .slide p {
+        .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             color: rgba(255,255,255,0.9);
         }
 
-        .slide-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .hero-buttons {
             display: flex;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.5);
-            margin: 0 8px;
-            cursor: pointer;
-        }
-
-        .indicator.active {
-            background-color: var(--white);
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* About Section */
         .about-section {
-            background-color: var(--light-gray);
+           /*background-color: rgb(231, 231, 231) !important;*/
+          background: linear-gradient(to bottom, rgb(231, 231, 231), rgb(249, 247, 247));
         }
 
         .about-content {
@@ -360,6 +354,10 @@
         .service-tab.cac i {
             color: var(--cac-color);
         }
+        
+        .service-tab.gadgets i {
+            color: var(--gadget-color);
+        }
 
         .service-tab h3 {
             font-size: 1.5rem;
@@ -400,9 +398,10 @@
             margin-bottom: 15px;
         }
 
-        /* Contact Section */
+        /* Contact Section - UPDATED: equal width & longer width-to-length */
         .contact-section {
-            background-color: var(--light-gray);
+            /*background-color: var(--light-gray);*/
+           background: linear-gradient(to top, rgb(231, 231, 231), rgb(231, 231, 231));
         }
 
         .contact-container {
@@ -414,55 +413,62 @@
         .contact-info {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 25px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .contact-item {
             display: flex;
             align-items: flex-start;
             gap: 15px;
+            padding: 28px 25px;            /* increased vertical/horizontal padding */
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            width: 100%;                    /* take full column width */
+            min-height: 180px;               /* give consistent height */
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
         .contact-item i {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--real-estate-color);
             margin-top: 5px;
+            min-width: 48px;
+            text-align: center;
         }
 
-        .contact-form {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        .contact-item > div {
+            flex: 1;                         /* allow text block to expand */
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--real-estate-color);
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
+        .contact-item p {
             font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 8px;
         }
 
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
+        .whatsapp-button {
+            margin-top: 10px;
         }
 
         /* Footer */
         footer {
-            background-color: var(--real-estate-color);
+            background-color: var(--real-estate-color); /*var(--real-estate-color)*/
             color: var(--white);
             padding: 60px 0 30px;
         }
@@ -473,21 +479,44 @@
             gap: 40px;
         }
 
+        .footer-main {
+            text-align: center;
+        }
+
         .footer-logo {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .footer-logo .logo-circle {
             background-color: var(--white);
             color: var(--real-estate-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .footer-main p {
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
 
         .footer-links {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .footer-column h4 {
@@ -537,7 +566,7 @@
         /* Responsive Styles */
         @media (min-width: 768px) {
             .header-container {
-                padding: 20px 30px;
+                padding: 15px 30px;
             }
             
             .company-name {
@@ -556,12 +585,14 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            /* Contact grid becomes 2x2 on tablet */
             .contact-info {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .footer-links {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 600px;
             }
         }
 
@@ -570,21 +601,43 @@
                 grid-template-columns: repeat(3, 1fr);
             }
             
-            .contact-container {
-                flex-direction: row;
-            }
-            
-            .contact-form {
-                flex: 1;
-            }
-            
+            /* Contact grid becomes 4 equal columns on desktop */
             .contact-info {
-                flex: 1;
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 1200px;
             }
             
             .footer-container {
                 flex-direction: row;
                 justify-content: space-between;
+                align-items: flex-start;
+            }
+            
+            .footer-main {
+                text-align: left;
+                flex: 1;
+            }
+            
+            .footer-logo {
+                justify-content: flex-start;
+            }
+            
+            .footer-main p {
+                margin-left: 0;
+            }
+            
+            .footer-links {
+                flex: 1;
+                max-width: none;
+                margin: 0;
+            }
+        }
+
+        /* additional tiny fix for very large screens: ensure contact boxes are wide enough */
+        @media (min-width: 1200px) {
+            .contact-item {
+                padding: 32px 28px;
+                min-height: 200px;
             }
         }
     </style>
@@ -593,11 +646,10 @@
     <!-- Header with Logo and Navigation -->
     <header>
         <div class="header-container">
-            <div class="logo">
-                <div class="logo-circle">H</div>
-                HECON
+            <div class="logo-container">
+                <img src="Hecon.png" alt="HECON Services Logo" class="logo-img">
+                <div class="company-name">HECON SERVICES</div>
             </div>
-            <div class="company-name">HECON SERVICES</div>
             <nav class="desktop-nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -605,7 +657,8 @@
                     <li><a href="#benefits">Benefits</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="re.html">Real Estate</a></li>
-                    <li><a href="cac.html">CAC Registration</a></li>
+                    <li><a href="cac.html">Business Registration</a></li>
+                    <li><a href="laptop.html">Gadgets & Laptops</a></li>
                 </ul>
             </nav>
             <button class="hamburger" id="hamburger">
@@ -622,48 +675,36 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="re.html">Real Estate Services</a></li>
                 <li><a href="cac.html">CAC Registration</a></li>
+                <li><a href="laptop.html">Gadgets & Laptops</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Hero Slider Section -->
+    <!-- Hero Section - Single Image with ONE button (OUR SERVICES) linking to #about -->
     <section class="hero-section" id="home">
-        <div class="container">
-            <div class="hero-slider">
-                <!-- Real Estate Slide -->
-                <div class="slide real-estate active">
-                    <div class="slide-content">
-                        <h1>Find Your Perfect Property</h1>
-                        <p>HECON Services offers comprehensive real estate solutions including property sales, rentals, and investment opportunities. Let us help you find your dream home or commercial space.</p>
-                        <a href="re.html" class="btn">Explore Real Estate</a>
+        <div class="hero-container">
+            <img src="Front photo.png" alt="HECON Services Professional Office" class="hero-image">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h1>Your Trusted Partner for Real Estate, Business & Laptop Deals</h1>
+                    <p>HECON Services offers comprehensive solutions including property sales, corporate registration, and premium gadgets. Experience professional service and exceptional results.</p>
+                    <div class="hero-buttons">
+                        <!-- REPLACED three buttons with a single 'Our Services' button using the dark green (real estate color) -->
+                        <a href="#about" class="btn">OUR SERVICES</a>
                     </div>
-                </div>
-                
-                <!-- CAC Registration Slide -->
-                <div class="slide cac">
-                    <div class="slide-content">
-                        <h1>Business Registration Made Easy</h1>
-                        <p>Streamline your corporate affairs registration with our expert CAC services. We handle company registration, business name reservation, and all compliance requirements.</p>
-                        <a href="cac.html" class="btn btn-cac">Start CAC Registration</a>
-                    </div>
-                </div>
-                
-                <div class="slide-indicators">
-                    <div class="indicator active" data-slide="0"></div>
-                    <div class="indicator" data-slide="1"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (target of the new button) -->
     <section class="about-section" id="about">
         <div class="container">
             <h2>About HECON Services</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>HECON Services is a professional firm specializing in real estate solutions and corporate affairs registration. With over a decade of experience, we have helped thousands of individuals and businesses achieve their property and corporate goals.</p>
-                    <p>Our team of dedicated professionals is committed to providing exceptional service, transparent processes, and tailored solutions to meet your specific needs.</p>
+                    <p>HECON Services is a professional firm specializing in real estate solutions, corporate affairs registration, and premium gadget sales. With over a decade of experience, we have helped thousands of individuals and businesses achieve their property, corporate, and technology goals.</p>
+                    <p>Our team of dedicated professionals is committed to providing exceptional service, transparent processes, and tailored solutions to meet your specific needs across all our service areas.</p>
                 </div>
                 
                 <div class="service-tabs">
@@ -676,9 +717,16 @@
                     
                     <div class="service-tab cac">
                         <i class="fas fa-file-contract"></i>
-                        <h3>CAC Registration</h3>
+                        <h3>Business Registration</h3>
                         <p>Company registration, business name reservation, and compliance services.</p>
                         <a href="cac.html" class="btn btn-cac">Learn More</a>
+                    </div>
+                    
+                    <div class="service-tab gadgets">
+                        <i class="fas fa-laptop"></i>
+                        <h3> Laptops</h3>
+                        <p>Premium laptops and gadgets for personal and professional use.</p>
+                        <a href="laptop.html" class="btn btn-gadget">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -702,11 +750,7 @@
                     <p>We streamline complex processes, saving you valuable time and ensuring all procedures are completed efficiently.</p>
                 </div>
                 
-                <div class="benefit-card">
-                    <i class="fas fa-headset"></i>
-                    <h3>Expert Support</h3>
-                    <p>Our team of professionals provides personalized guidance and support throughout your entire journey.</p>
-                </div>
+                
                 
                 <div class="benefit-card">
                     <i class="fas fa-handshake"></i>
@@ -723,26 +767,18 @@
                 <div class="benefit-card">
                     <i class="fas fa-check-circle"></i>
                     <h3>Comprehensive Services</h3>
-                    <p>From property search to corporate registration, we provide end-to-end solutions for all your needs.</p>
+                    <p>From property search to corporate registration and gadget sales, we provide end-to-end solutions.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section - UPDATED boxes equal width, wider proportion -->
     <section class="contact-section" id="contact">
         <div class="container">
             <h2>Contact Us</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Our Office</h3>
-                            <p>123 Business Avenue, Suite 500<br>City Center, Business District</p>
-                        </div>
-                    </div>
-                    
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
@@ -762,42 +798,21 @@
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <h3>Working Hours</h3>
-                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM</p>
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" required>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>Chat on WhatsApp</h3>
+                            <p>Get quick responses and assistance through WhatsApp</p>
+                            <a href="https://wa.me/2348001234567" target="_blank" class="btn btn-whatsapp whatsapp-button">
+                                <i class="fab fa-whatsapp"></i> Whatsapp
+                            </a>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <select id="service" class="form-group input" style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem;">
-                                <option value="">Select a service</option>
-                                <option value="real-estate">Real Estate Services</option>
-                                <option value="cac">CAC Registration</option>
-                                <option value="both">Both Services</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -807,12 +822,12 @@
     <footer>
         <div class="container">
             <div class="footer-container">
-                <div class="footer-column">
+                <div class="footer-main">
                     <div class="footer-logo">
-                        <div class="logo-circle">H</div>
+                        
                         HECON SERVICES
                     </div>
-                    <p>Providing exceptional real estate and corporate registration services with integrity and professionalism since 2010.</p>
+                    <p>Providing exceptional real estate, corporate registration, and gadget sales services with integrity and professionalism since 2010.</p>
                 </div>
                 
                 <div class="footer-links">
@@ -831,18 +846,7 @@
                         <ul>
                             <li><a href="re.html">Real Estate</a></li>
                             <li><a href="cac.html">CAC Registration</a></li>
-                            <li><a href="re.html">Property Management</a></li>
-                            <li><a href="cac.html">Business Compliance</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#contact">Support</a></li>
+                            <li><a href="laptop.html">Gadgets & Laptops</a></li>
                         </ul>
                     </div>
                 </div>
@@ -874,48 +878,6 @@
             });
         });
         
-        // Hero Slider Functionality
-        const slides = document.querySelectorAll('.slide');
-        const indicators = document.querySelectorAll('.indicator');
-        let currentSlide = 0;
-        const slideInterval = 5000; // 5 seconds
-        
-        function showSlide(index) {
-            // Hide all slides
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            // Show the selected slide
-            slides[index].classList.add('active');
-            indicators[index].classList.add('active');
-            currentSlide = index;
-        }
-        
-        function nextSlide() {
-            let nextIndex = (currentSlide + 1) % slides.length;
-            showSlide(nextIndex);
-        }
-        
-        // Set up automatic slide rotation
-        let slideTimer = setInterval(nextSlide, slideInterval);
-        
-        // Add click events to indicators
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                clearInterval(slideTimer);
-                showSlide(index);
-                // Restart automatic rotation
-                slideTimer = setInterval(nextSlide, slideInterval);
-            });
-        });
-        
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will contact you soon.');
-            this.reset();
-        });
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -936,3 +898,4 @@
     </script>
 </body>
 </html>
+```
