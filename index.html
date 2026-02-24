@@ -79,6 +79,25 @@ Here is the updated HTML code. I've implemented all your requested changes: the 
         p {
             margin-bottom: 15px;
             color: var(--text-light);
+        } 
+
+        .btnn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #e9f5ee;
+            color: black;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: black;
+            cursor: pointer
+        }
+
+        .btnn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .btn {
@@ -101,19 +120,23 @@ Here is the updated HTML code. I've implemented all your requested changes: the 
         }
 
         .btn-cac {
-            background-color: var(--cac-color);
+            background-color: rgb(23, 39, 17);
         }
 
         .btn-cac:hover {
-            background-color: #0a3d57;
+            background-color: #144328;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1)
         }
         
         .btn-gadget {
-            background-color: var(--gadget-color);
+            background-color: rgb(23, 39, 17);
         }
         
         .btn-gadget:hover {
-            background-color: #7a1fd1;
+            background-color: #144328;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1)
         }
         
         .btn-whatsapp {
@@ -732,7 +755,7 @@ Here is the updated HTML code. I've implemented all your requested changes: the 
                 <h1>Your Trusted Partner for Real Estate, Business & Laptop Deals</h1>
                 <p>HECON Services offers comprehensive solutions including property sales, corporate registration, and premium gadgets. Experience professional service and exceptional results.</p>
                 <div class="hero-buttons">
-                    <a href="#about" class="btn">OUR SERVICES</a>
+                    <a href="#about" class="btnn">OUR SERVICES</a>
                 </div>
             </div>
         </div>
