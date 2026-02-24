@@ -107,7 +107,7 @@
             background-color: #0a3d57;
         }
 
-        /* ----- header exactly like home page ----- */
+        /* ----- header MODIFIED: desktop only Real Estate / CAC / Gadgets, mobile keeps hamburger + logo left + centered text ----- */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -122,12 +122,14 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
+            /* Use flex layout that allows centering of company name on mobile */
         }
 
         .logo-container {
             display: flex;
             align-items: center;
             gap: 15px;
+            cursor: pointer;  /* indicate clickable */
         }
 
         .logo-img {
@@ -141,6 +143,7 @@
             color: var(--text-dark);
         }
 
+        /* desktop navigation: only Real Estate / CAC / Gadgets (no Home, About, Benefits, Contact) */
         .desktop-nav {
             display: none;
         }
@@ -166,12 +169,20 @@
             color: var(--real-estate-color);
         }
 
+        /* active link style */
+        .desktop-nav a.active, .mobile-menu a.active {
+            color: var(--real-estate-color);
+            font-weight: 700;
+        }
+
+        /* Hamburger always visible on mobile, hidden on desktop */
         .hamburger {
             font-size: 1.5rem;
             color: var(--text-dark);
             background: none;
             border: none;
             cursor: pointer;
+            display: block; /* visible by default for mobile */
         }
 
         /* mobile menu */
@@ -530,24 +541,25 @@
             font-size: 0.9rem;
         }
 
-        /* responsive overrides exactly like home page */
+        /* responsive overrides: desktop nav appears, hamburger hidden; mobile company name centered */
         @media (min-width: 768px) {
             .header-container {
                 padding: 15px 30px;
             }
             
-            .company-name {
-                display: block;
+            /* desktop: hamburger hidden, desktop nav visible */
+            .hamburger {
+                display: none;
             }
             
             .desktop-nav {
                 display: block;
             }
             
-            .hamburger {
-                display: none;
-            }
+            /* On desktop, the logo container remains left, company name stays there (already left). No change needed. */
+            /* But we keep .company-name exactly as is (left aligned) - perfect */
             
+            /* Rest of the sections */
             .process-steps {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -597,38 +609,100 @@
             }
         }
 
-        /* active link style */
-        .desktop-nav a.active, .mobile-menu a.active {
-            color: var(--real-estate-color);
-            font-weight: 700;
+        /* For mobile screens: we want the company name centered between logo and hamburger.
+           Achieve by making the container a flex with three columns:
+           - left: logo container (with logo and possibly text, but we'll hide the text on mobile if needed)
+           - middle: company name (centered)
+           - right: hamburger
+           But we need to keep the "HECON SERVICES" text exactly in the middle while still having logo left.
+        */
+        @media (max-width: 767px) {
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+            }
+            
+            /* The logo container contains image and the text. We need to split them:
+               - Keep image left, but move text to center.
+               So we restructure: create a separate element for centered text.
+               However HTML structure is fixed. We'll do it with positioning or flex adjustments.
+               Better approach: hide .company-name inside logo-container on mobile, and create a pseudo or separate span.
+               But to keep HTML unchanged, we use CSS trick: on mobile, .logo-container has the image, but we move the text to center using absolute positioning? Not clean.
+               Simpler: modify HTML slightly: we already have .company-name inside .logo-container. On mobile we want that text centered, not left.
+               We can achieve by making .logo-container flex-1, and set its contents to be spread but we only have two items: image and text.
+               We'll use a three-column flex: left: logo-container (image only), middle: .mobile-center-title, right: hamburger.
+               We'll create a new element for the centered title and hide the original .company-name on mobile.
+            */
+            .logo-container .company-name {
+                display: none;  /* hide the original left-aligned title on mobile */
+            }
+            
+            /* create a pseudo element or use a new span? we can insert via JavaScript, but easier: add a new span in HTML with same text for mobile, centered.
+               We'll do that in HTML: a <div class="mobile-center-title">HECON SERVICES</div> and hide it on desktop.
+            */
+            .mobile-center-title {
+                display: block;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--text-dark);
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+            }
+            
+            .header-container {
+                justify-content: space-between;
+            }
+            
+            .logo-container {
+                flex: 0 0 auto;
+            }
+            
+            .hamburger {
+                flex: 0 0 auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-center-title {
+                display: none;  /* hide centered title on desktop */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER (identical to home page) -->
+    <!-- HEADER (modified: desktop only Real Estate / CAC / Gadgets, mobile centers title) -->
     <header>
         <div class="header-container">
-            <div class="logo-container">
+            <!-- Logo container: clickable to scroll to top -->
+            <div class="logo-container" id="logoHomeLink">
                 <img src="hecon.png" alt="HECON Services Logo" class="logo-img">
                 <div class="company-name">HECON SERVICES</div>
             </div>
+            
+            <!-- Centered title for mobile only (added per new design) -->
+            <div class="mobile-center-title">HECON SERVICES</div>
+            
+            <!-- Desktop Navigation: only the three specific pages (no Home/About/Benefits/Contact) -->
             <nav class="desktop-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#benefits">Benefits</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="re.html">Real Estate</a></li>
                     <li><a href="cac.html" class="active">Business Registration</a></li>
                     <li><a href="laptop.html">Gadgets & Laptops</a></li>
                 </ul>
             </nav>
+            
+            <!-- Hamburger (visible on mobile) -->
             <button class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
         
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu (contains full navigation including Home etc., but not changed) -->
         <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -770,7 +844,7 @@
                     </div>
                 </div>
                 
-                <!-- LAST QUESTION (the 5th one) REMOVED as requested -->
+                <!-- LAST QUESTION REMOVED as requested -->
             </div>
         </div>
     </section>
@@ -880,7 +954,7 @@
             });
         });
 
-        // Set active nav based on current page
+        // Set active nav based on current page (only for desktop nav and mobile)
         document.addEventListener('DOMContentLoaded', () => {
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
             const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-menu a');
@@ -892,6 +966,18 @@
                     link.classList.remove('active');
                 }
             });
+
+            // Logo click: scroll to top of page (smoothly)
+            const logoContainer = document.querySelector('.logo-container');
+            if (logoContainer) {
+                logoContainer.addEventListener('click', function(e) {
+                    // If the click is on the logo or its child, scroll to top
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
         });
     </script>
 </body>
